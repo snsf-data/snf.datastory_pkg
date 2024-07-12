@@ -17,23 +17,29 @@
 #'  print_num(pi, "de")
 
 print_num <- function(x, lang = "en") {
+
+  chk::chk_string(lang)
+  chk::chk_subset(lang, c("en", "de", "fr"))
+
   sapply(
     x,
-    \(x)
-    if (x >= 10000) {
-      if (lang == "en")
-        prettyNum(x, big.mark = ",", decimal.mark = ".")
-      else if (lang == "de")
-        prettyNum(x, big.mark = "\U00A0", decimal.mark = ",")
-      else if (lang == "fr")
-        prettyNum(x, big.mark = "\U00A0", decimal.mark = ",")
-    } else {
-      if (lang == "en")
-        prettyNum(x, big.mark = "", decimal.mark = ".")
-      else if (lang == "de")
-        prettyNum(x, big.mark = "", decimal.mark = ",")
-      else if (lang == "fr")
-        prettyNum(x, big.mark = "", decimal.mark = ",")
+    \(x) {
+      x <- format(x, scientific = FALSE)
+      if (x >= 10000) {
+        if (lang == "en")
+          prettyNum(x, big.mark = ",", decimal.mark = ".")
+        else if (lang == "de")
+          prettyNum(x, big.mark = "\U00A0", decimal.mark = ",")
+        else if (lang == "fr")
+          prettyNum(x, big.mark = "\U00A0", decimal.mark = ",")
+      } else {
+        if (lang == "en")
+          prettyNum(x, big.mark = "", decimal.mark = ".")
+        else if (lang == "de")
+          prettyNum(x, big.mark = "", decimal.mark = ",")
+        else if (lang == "fr")
+          prettyNum(x, big.mark = "", decimal.mark = ",")
+      }
     }
   )
 }
