@@ -1,12 +1,14 @@
 Package: snf.datastory
-Type: Package
 Title: Creating and deploying SNSF Data Stories
 Version: 0.1.3
-Author: Julius Mattern
-Maintainer: Simon Gorin <simon.gorin@snf.ch>
+Authors@R:
+    person(given = "Julius", family = "Mattern", role = c("aut", "cre"))
+    person("Simon", "Gorin", email = "simon.gorin@fns.ch", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-7462-0446"))
 Description: Functions around the creation and deployment of SNSF Data Stories.
 License: MIT + file LICENSE
 Imports:
+    chk,
     cli,
     dplyr,
     forcats,
